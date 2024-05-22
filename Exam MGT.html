@@ -1,0 +1,68 @@
+<!--THE HTML-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Examination Management System</title>
+</head>
+<body>
+  <h1>Welcome to the Examination Management System (EMS)</h1>
+  
+  <!-- Login Form -->
+  <div id="loginForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username">
+    <label for="password">Password:</label>
+    <input type="text" id="password">
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- Admin Panel -->
+  <div id="adminPanel" style="display:none;">
+    <h2>Admin Panel</h2>
+    <label for="examName">Exam Name:</label>
+    <input type="text" id="examName">
+    <button onclick="setExam()">Set Exam</button>
+
+    <!-- Student Groups -->
+    <h3>Student Groups</h3>
+    <label for="group">Student Group Name:</label>
+    <input type="text" id="group">
+    <button onclick="addStudentGroup()">Add Student Group</button>
+  </div>
+
+  <!-- Student Panel-->
+  <div id="studentPanel" style="display:none;">
+    <h2>Login</h2>
+    <form>
+      <label for="studentName">Student Name:</label>
+      <input type="text" id="studentName">
+      <label for="studentID">Student ID:</label>
+      <input type="text" id="studentID">
+      <button onclick="submitForm()">Submit Form</button>
+    </form>
+  </div>
+      <!-- Student Login Panel 
+      <div id="loginForm">
+        <h1>Student Login</h1>
+        <label for="studentName">Your Name:</label>
+        <input type="text" id="studentName">
+        <label for="studentID">Student ID:</label>
+        <input type="text" id="studentID">
+        <button onclick="studentLogin()">Login</button>
+    </div> -->
+
+    <!-- Student Panel for Examination Details -->
+    <div id="studentPanel"></div>
+
+  <!-- Hall Ticket Download -->
+  <div id="hallTicket" style="display:none;">
+    <h2>Hall Ticket</h2>
+    <button onclick="downloadHallTicket()">Download Hall Ticket</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
