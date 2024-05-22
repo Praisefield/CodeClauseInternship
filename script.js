@@ -1,39 +1,22 @@
-//The JavaScript
-//Login Function
-function login() {
-  const username = document.getElementById('username').value;
-  if (username === 'admin') {
-    document.getElementById('loginForm').style.display = "none";
-    document.getElementById('adminPanel').style.display = "block";
-  } else {
-    document.getElementById('loginForm').style.display = "none";
-    document.getElementById('studentForm').style.display = "block";
-  }
-}
+async function getWeather() {
+    const apiKey = 'b6f5d048f56a77c466c326fedd862846'; 
+    // Replace 'YOUR_API_KEY' with your actual API key
+    const location = document.getElementById('locationInput').value;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
 
-// Set Exam Function
-function setExam() {
-  const examName = document.getElementById('examName').value;
-  // Code to set exam
-
-}
-
-// Add Student Group Function
-function addStudentGroup() {
-  const group = document.getElementById('group').value;
-  // Code to add student group
-}
-
-// Submit Form Function
-function submitForm() {
-  const studentName = document.getElementById('studentName').value;
-  const studentID = document.getElementById('studentID').value;
-  // Code to submit form
-  document.getElementById('studentForm').style.display = "none";
-  document.getElementById('hallTicket').style.display = "block";
-}
-
-// Download Hall Ticket Function
-function downloadHallTicket() {
-  // Code to download hall ticket
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        const weatherInfo = document.getElementById('weatherInfo');
+        weatherInfo.innerHTML = `
+            <h2>${data.name}, ${data.sys.country}</h2>
+            <p>${data.weather[0].description}</p>
+            <p>Temperature: ${data.main.temp} &#8451;</p>
+            <p>Humidity: ${data.main.humidity} %</p>
+        `;
+    } catch (error) {
+        console.error('Error fetching data: ', error);
+        document.getElementById('weatherInfo').innerHTML = 'Failed to get weather data. Please try again.';
+    }
 }
